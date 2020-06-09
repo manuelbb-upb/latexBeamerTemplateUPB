@@ -25,16 +25,24 @@
 \RequirePackage{graphicx,xcolor,colortbl}
 
 
-% change the font size of captions 
+% change the font size of captions
 \RequirePackage[font=footnotesize]{caption}
 
 
 % FONT
-% we use Cabin as a modern open source sans serif font. It is similar to the
-% UPB font and is provided by default in LaTeX.
-\RequirePackage[sfdefault,condensed]{cabin}
+% we use Cabin as a modern open source sans serif font.
+% To not depend on the cabin package we ship the fonts
+% and include them via fontspec (compatible with unicode-math)
+\usepackage{fontspec}
+\setsansfont{CabinCondensed}[
+	Path = opentype/ ,
+	Extension = .otf ,
+	UprightFont = *-Regular ,
+	BoldFont = *-Bold ,
+	ItalicFont = *-Italic ,
+	BoldItalicFont = *-BoldItalic ,
+]
 \renewcommand{\familydefault}{\sfdefault}
-
 
 % GEOMETRY
 % setting the parskip and the margins
@@ -96,7 +104,7 @@
 \ProcessOptionsBeamer
 
 %We use the theme color for all design elements
-\setbeamercolor{alerted text}{fg=upbred} 
+\setbeamercolor{alerted text}{fg=upbred}
 \setbeamercolor{title}{fg=\titlecolor}
 \setbeamercolor{frametitle}{fg=\titlecolor}
 \setbeamercolor{structure}{fg=\titlecolor}
@@ -152,7 +160,7 @@
 	\begin{tikzpicture}
 	\ifnum\thepage<2\relax % this is only relevant for the first page
 		\useasboundingbox (0,0) rectangle (\the\paperwidth,\the\paperheight);
-		
+
 		% crop path for the title image
 		\coordinate(f0) at (12.8,5);
 		\coordinate(f1) at (11.7,3.9);
@@ -231,8 +239,8 @@
 			{\hspace{.7cm}\parbox{7cm}{
 			\LARGE \baselineskip=8mm \textbf{\MakeUppercase{\inserttitle}}\par
 			}};
-		\draw[ultra thick,white] ([yshift=2.4cm]title.south west)--([yshift=2.4cm]title.south east);	
-		\draw[ultra thick,white] ([yshift=.8cm]title.south west)--([yshift=.8cm]title.south east);	
+		\draw[ultra thick,white] ([yshift=2.4cm]title.south west)--([yshift=2.4cm]title.south east);
+		\draw[ultra thick,white] ([yshift=.8cm]title.south west)--([yshift=.8cm]title.south east);
 		\draw[ultra thick,white] ([yshift=1.6cm]title.south west)--([yshift=1.6cm]title.south east);
 		\fill[\titlecolor]	([yshift=-.5mm,xshift=.07mm] title.north west)rectangle([yshift=1.5mm,xshift=-.07mm]title.north east);
 
@@ -289,7 +297,7 @@
 				color = white, fill= \titlecolor] (title) at (topright)
 				{\tiny \baselineskip=10pt \textbf{\MakeUppercase \insertshorttitle}\par};
 
-			\draw[ultra thick,white] ([yshift=.4cm]title.south west)--([yshift=.4cm]title.south east);	
+			\draw[ultra thick,white] ([yshift=.4cm]title.south west)--([yshift=.4cm]title.south east);
 		\fi
 
 
@@ -298,17 +306,17 @@
 		\ifnum\thesmallft>0\relax%
 			\node[anchor=south west, inner sep = 0mm, align = flush left,
 				color=\titlecolor] at (0,0)
-				{\normalsize \textbf{\insertframetitle}}; 
+				{\normalsize \textbf{\insertframetitle}};
 		\else
 			\node[anchor=west,inner sep = 0mm, align = flush left,
 				text width = .8\textwidth, color=\titlecolor] at (0,0)
-				{\LARGE \textbf{\insertframetitle}}; 
+				{\LARGE \textbf{\insertframetitle}};
 		\fi
 	\end{tikzpicture}
 }
 
 
-% TEMPATE FOR THE HEADER 
+% TEMPATE FOR THE HEADER
 \setbeamertemplate{headline}
 {
 	\begin{tikzpicture}
@@ -411,7 +419,7 @@
 
 
 
-% defining the handout style 
+% defining the handout style
 \mode<handout>{
 	\RequirePackage{pgfpages}
 	\ifnum\theslidesperhandout=1\relax
