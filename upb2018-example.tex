@@ -18,10 +18,10 @@
 
 \usetheme[
 	% choose the color theme of the presentation
-		cyan % default
+		%cyan % default
 		%orange
 		%green
-		%cassis
+		cassis
 		%blue
 		%red
 	,
@@ -36,6 +36,11 @@
 ]{upb2018}
 
 
+% set math font to Fira Math
+\usefonttheme{professionalfonts}% use own font handling
+\usepackage[mathrm=sym]{unicode-math}
+\setmathfont[Path = opentype/]{FiraMath-Regular.otf}
+
 % IMAGES
 % chooose the cropped background image on the titlepage
 \renewcommand{\titleimage}{abb/upbBackground.png}
@@ -44,8 +49,6 @@
 \renewcommand{\headerlogo}{abb/upbLogoEN.png}
 % use German UPB logo
 %\renewcommand{\headerlogo}{abb/upbLogoDE.png}
-
-
 
 % GENERAL INFORMATIONS
 \title[SHORTTITLE]{This Could Be The Title Of Your Presentation}
@@ -195,7 +198,7 @@ be multiline.}
 \begin{frame}{Mathematics}
 	Mathematical formulas can be used as usual \colemph{inline}, like for example
 	\(a^2+b^2 = c^2\) or in \colemph{display} mode:
-	\[\sum\limits_{k=0}^\infty q^k = \frac{1}{1-q}, \quad \forall q \in ]0,1[.\]
+	$$\int\limits_{k=0}^\infty q^k = \frac{1}{1-q}, \quad \forall q \in ]0,1[.$$
 \end{frame}
 
 
