@@ -15,4 +15,4 @@ This way, unicode glyphs such as α,β,γ,… can be used in math environments.
 The original fonts are available at https://github.com/impallari/Cabin/ and are licensed under the SIL Open Font License, (version 1.1).
 
 ### FiraMath
-The original fonts are available at https://github.com/firamath/firamath and are licensed under the SIL Open Font License, (version 1.1).s
+The original fonts are available at https://github.com/firamath/firamath and are licensed under the SIL Open Font License, (version 1.1).
